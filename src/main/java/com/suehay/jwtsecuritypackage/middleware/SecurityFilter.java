@@ -49,7 +49,7 @@ public class SecurityFilter {
                     authConfig
                             // Allow anyone to register.
                             .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                            // Allow anyone to login.
+                            // Allow anyone to log in.
                             .requestMatchers(HttpMethod.GET, "/auth/login").permitAll()
                             // Allow anyone to refresh their authentication.
                             .requestMatchers(HttpMethod.GET, "/auth/refresh").permitAll()

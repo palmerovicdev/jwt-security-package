@@ -24,7 +24,7 @@ public class JwtAuthentivationFilter extends OncePerRequestFilter {
      * It is overridden from OncePerRequestFilter class.
      *
      * @param request     the HttpServletRequest which contains the request the client has made of the server.
-     * @param response    the HttpServletResponse which contains the response the server sends to the client.
+     * @param response    the HttpServletResponse, which contains the response the server sends to the client.
      * @param filterChain the FilterChain is provided to invoke the next entity in the chain.
      * @throws ServletException if the request for the GET could not be handled.
      * @throws IOException      if an input or output error is detected when the servlet handles the GET request.
