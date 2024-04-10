@@ -34,6 +34,16 @@ public class DataSourceConfiguration implements DataSourceConfig {
     }
 }
 ```
+## Features
+
+- Authenticate users using JWT tokens
+- Protect routes using JWT tokens
+- Create JWT tokens
+- Verify JWT tokens
+- Get user details from JWT tokens
+- Get user roles from JWT tokens
+- Get user permissions from JWT tokens
+- Create admins, users and authentication as a guest user
 
 ## Contributing
 
