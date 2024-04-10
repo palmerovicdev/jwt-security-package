@@ -21,6 +21,7 @@ public class SecurityFilter {
     private final AuthenticationProvider authenticationProvider;
     private final JwtAuthentivationFilter jwtAuthentivationFilter;
 
+    // INFO: this must change between projects
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
