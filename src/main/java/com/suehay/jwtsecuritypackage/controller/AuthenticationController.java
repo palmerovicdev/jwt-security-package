@@ -7,10 +7,7 @@ import com.suehay.jwtsecuritypackage.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -27,5 +24,15 @@ public class AuthenticationController {
     @PostMapping("/login")
     public ResponseEntity<GenericResponse<AuthenticationResponse>> login(@RequestBody AuthenticationRequest authenticationRequest) {
         return ResponseEntity.ok(authService.login(authenticationRequest));
+    }
+
+    @GetMapping("/refresh")
+    public ResponseEntity<GenericResponse<AuthenticationResponse>> refresh(@RequestBody AuthenticationRequest authenticationRequest) {
+        return ResponseEntity.ok(authService.refresh(authenticationRequest));
+    }
+
+    @PostMapping("/register/admin")
+    public ResponseEntity<GenericResponse<AuthenticationResponse>> registerAdmin(@RequestBody AuthenticationRequest authenticationRequest) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(authService.registerAdmin(authenticationRequest));
     }
 }

@@ -10,4 +10,7 @@ public interface AuthService {
 
     GenericResponse<AuthenticationResponse> register(AuthenticationRequest authenticationRequest);
 
+    GenericResponse<AuthenticationResponse> refresh(AuthenticationRequest authenticationRequest);
+
+    GenericResponse<AuthenticationResponse> registerAdmin(AuthenticationRequest authenticationRequest);
 }

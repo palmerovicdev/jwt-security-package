@@ -63,4 +63,30 @@ public class AuthServiceImpl implements AuthService {
                                                                                                             .role(user.getRole().name())
                                                                                                             .build());
     }
+
+    @Override
+    public GenericResponse<AuthenticationResponse> refresh(AuthenticationRequest authenticationRequest) {
+        var user = userRepository.findByUsername(authenticationRequest.uasername());
+        return user.map(value -> new GenericResponse<>(null, "Token refreshed", "200", AuthenticationResponse.builder()
+                                                                                                              .token(jwtService.generateToken(value, generateExtraClaims(value)))
+                                                                                                              .username(value.getUsername())
+                                                                                                              .role(value.getRole().name())
+                                                                                                              .build())).orElseGet(() -> new GenericResponse<>("User not found", "The user with the given username was not found", "404", null));
+    }
+
+    @Override
+    public GenericResponse<AuthenticationResponse> registerAdmin(AuthenticationRequest authenticationRequest) {
+        var user = new User();
+        user.setUsername(authenticationRequest.uasername());
+        user.setPassword(passwordEncoder.encode(authenticationRequest.password()));
+        user.setRole(Role.ADMIN);
+
+        userRepository.save(user);
+
+        return new GenericResponse<>(null, "Admin registered successfully", "201", AuthenticationResponse.builder()
+                                                                                                             .token(jwtService.generateToken(user, generateExtraClaims(user)))
+                                                                                                             .username(user.getUsername())
+                                                                                                             .role(user.getRole().name())
+                                                                                                             .build());
+    }
 }
