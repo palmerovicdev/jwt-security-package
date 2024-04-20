@@ -53,7 +53,7 @@ public class SecurityFilter {
                             .requestMatchers(HttpMethod.GET, "/auth/login").permitAll()
                             // Allow anyone to refresh their authentication.
                             .requestMatchers(HttpMethod.GET, "/auth/refresh").permitAll()
-                            // Only allow users with the "ROOT" authority to register as an admin.
+                            // Only allow users with the "ROOT" authority to register an admin.
                             .requestMatchers(HttpMethod.POST, "/auth/register/admin").hasAnyAuthority("ROOT")
                             // Allow anyone to access the error page.
                             .requestMatchers("/error").permitAll();
